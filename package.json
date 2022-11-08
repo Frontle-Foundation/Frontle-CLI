@@ -1,0 +1,56 @@
+{
+  "name": "@frontle/frontle",
+  "version": "0.0.2",
+  "description": "Frontle command line interface tool",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "frontle",
+    "spa",
+    "client",
+    "framework",
+    "cordova",
+    "web",
+    "android",
+    "ios",
+    "electron",
+    "browser",
+    "app",
+    "desktop"
+  ],
+  "author": "Artifriends, Inc. <help@artifriends.com>",
+  "contributors": [
+    "Yun HyeongJun <y37653@gmail.com>",
+    "Ohn DongHun <fatihohn@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Artifriends-inc/Frontle-CLI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Artifriends-inc/Frontle-CLI/issues"
+  },
+  "homepage": "https://frontle.org/",
+  "main": "bin/cli.js",
+  "bin": {
+    "frontle": "bin/cli.js"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "bin",
+    "frontle_core"
+  ],
+  "dependencies": {
+    "@babel/core": "7.18.6",
+    "@babel/preset-env": "7.18.6",
+    "babelify": "10.0.0",
+    "browserify": "17.0.0",
+    "colors": "^1.4.0",
+    "commander": "^9.4.1",
+    "node-html-parser": "^6.1.1",
+    "shelljs": "0.8.5"
+  }
+}

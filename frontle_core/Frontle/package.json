@@ -1,0 +1,47 @@
+{
+  "name": "frontle-example-app",
+  "description": "The easiest multi-platform SPA framework",
+  "version": "0.0.2",
+  "author": "Artifriends, Inc. <help@artifriends.com>",
+  "private": true,
+  "contributors": [
+    "Yun HyeongJun <y37653@gmail.com>",
+    "Ohn DongHun <fatihohn@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frontle-Core/Frontle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Frontle-Core/Frontle/issues"
+  },
+  "homepage": "https://frontle.org/",
+  "devDependencies": {
+    "cordova-android": "10.1.2",
+    "cordova-browser": "^6.0.0",
+    "cordova-electron": "^3.1.0",
+    "cordova-ios": "6.2.0"
+  },
+  "cordova": {
+    "platforms": [
+      "browser",
+      "android",
+      "ios",
+      "electron"
+    ],
+    "plugins": {}
+  },
+  "frontle": {
+    "dependencies": {
+      "jquery": {},
+      "@frontle/frontle-core": {
+        "notBuild": true
+      }
+    }
+  },
+  "dependencies": {
+    "@frontle/frontle-core": "^0.0.2",
+    "jquery": "^3.6.1"
+  }
+}

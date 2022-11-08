@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "msjsdiag.cordova-tools",
+    "pushqrdx.inline-html",
+    "jack89ita.open-file-from-path",
+    "ionutvmi.path-autocomplete",
+    "esbenp.prettier-vscode"
+  ]
+}

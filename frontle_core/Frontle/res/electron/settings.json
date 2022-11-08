@@ -1,0 +1,8 @@
+{
+  "browserWindow": {
+    "width": 1024,
+    "height": 768,
+    "resizable": true,
+    "fullscreen": false
+  }
+}
