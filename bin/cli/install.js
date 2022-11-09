@@ -52,7 +52,7 @@ const allInstall = async () => {
       );
 
       // Installation Success Message Output
-      util.consoleLogData(`Complete installation of "${packageName}" package`);
+      util.consoleLogData(`Package "${packageName}" install complete`);
     }
   } catch (e) {
     throw e;
@@ -104,7 +104,7 @@ const install = async (enteredPackageFullName, notBuild) => {
 
     // Installation Success Message Output
     util.consoleLogData(
-      `Complete installation of "${packageFullName}" package`
+      `Package "${packageFullName}" install complete`
     );
   } catch (e) {
     throw e;
@@ -202,7 +202,7 @@ module.exports = async (enteredPackageFullName, options) => {
       : await install(enteredPackageFullName, options.notBuild === true);
 
     // Success Message Output
-    util.consoleLogData("Complete package installation");
+    util.consoleLogData("Package installation complete");
   } catch (e) {
     throw e;
   }

@@ -26,7 +26,7 @@ module.exports = (enteredPackageFullName) => {
     cliUtil.setPackageJsonData(packageJsonData);
 
     // Success Message Output
-    util.consoleLogData(`Complete uninstallation of "${packageName}" package`);
+    util.consoleLogData(`Package "${packageName}" uninstall complete`);
   } catch (e) {
     throw e;
   }
