@@ -103,9 +103,7 @@ const install = async (enteredPackageFullName, notBuild) => {
     await buildPackage(packageName, packageType, notBuild);
 
     // Installation Success Message Output
-    util.consoleLogData(
-      `Package "${packageFullName}" install complete`
-    );
+    util.consoleLogData(`Package "${packageFullName}" install complete`);
   } catch (e) {
     throw e;
   }
@@ -182,6 +180,10 @@ const buildPackage = async (packageName, packageType = "", notBuild) => {
       `
         ${builtSource}
 
+        try{
+          var f_package_${filteredPackageName} = require('${packageName}');
+        } catch(e){};
+        /** @type {f_package_${filteredPackageName}} */
         export default ${filteredPackageName};
       `
     );
