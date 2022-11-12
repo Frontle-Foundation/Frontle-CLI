@@ -128,23 +128,6 @@ const buildPackage = async (packageName, packageType = "", notBuild) => {
       return;
     }
 
-    // Build the package
-    shellUtil.shell_mkdir(packageFolderPath);
-    if (packageType === "module") {
-      fs.writeFileSync(
-        bundlePath,
-        `
-          import * as f_package from '${packageName}';
-          module.exports = f_package;
-        `
-      );
-    } else {
-      fs.writeFileSync(
-        bundlePath,
-        `module.exports = require('${packageName}');`
-      );
-    }
-
     // Filter package name
     const filteredPackageName = packageName
       .toLowerCase()
@@ -153,10 +136,29 @@ const buildPackage = async (packageName, packageType = "", notBuild) => {
       .replace(/\//gi, "_")
       .replace(/\./gi, "_");
 
+    // create random name;
+    const randomName = `_f_${util.Timestamp().toString()}`;
+
+    // Build the package
+    shellUtil.shell_mkdir(packageFolderPath);
+    if (packageType === "module") {
+      fs.writeFileSync(
+        bundlePath,
+        `
+          import * as f_package from '${packageName}';
+          window.${randomName} = f_package;
+        `
+      );
+    } else {
+      fs.writeFileSync(
+        bundlePath,
+        `window.${randomName} = require('${packageName}');`
+      );
+    }
+
     const builtSource = await new Promise((resolve, reject) => {
       browserify({
         entries: [bundlePath],
-        standalone: filteredPackageName,
       })
         .transform(require("babelify"), {
           global: true,
@@ -180,11 +182,13 @@ const buildPackage = async (packageName, packageType = "", notBuild) => {
       `
         ${builtSource}
 
-        try{
-          var f_package_${filteredPackageName} = require('${packageName}');
-        } catch(e){};
-        /** @type {f_package_${filteredPackageName}} */
-        export default ${filteredPackageName};
+        if(!window){
+          var ${filteredPackageName} = require('${packageName}');
+        }
+        ${filteredPackageName} = window.${randomName};
+        delete window.${randomName};
+
+        export { ${filteredPackageName} };
       `
     );
   } catch (e) {
