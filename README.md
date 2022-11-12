@@ -54,9 +54,9 @@ cordova run browser
 
 - **사전 설정**
 
-cordova에서 안드로이드를 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
+  cordova에서 안드로이드를 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
 
-https://cordova.apache.org/docs/en/11.x/guide/platforms/android/index.html
+  https://cordova.apache.org/docs/en/11.x/guide/platforms/android/index.html
 
 - **실행 방법**
 
@@ -67,7 +67,7 @@ cordova run android
 
 - **디바이스에 설치한 Android 앱을 크롬 브라우저로 디버깅하는 방법**
 
-https://developer.chrome.com/docs/devtools/remote-debugging/
+  https://developer.chrome.com/docs/devtools/remote-debugging/
 
 ### **IOS**
 
