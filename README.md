@@ -43,7 +43,7 @@ cordova run browser
 
 ### **Browser**
 
-**실행 방법**
+- **실행 방법**
 
 ```shell
 cordova platform add browser
@@ -52,45 +52,51 @@ cordova run browser
 
 ### **Android**
 
-**사전 설정**
+- **사전 설정**
 
 cordova에서 안드로이드를 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
 
 https://cordova.apache.org/docs/en/11.x/guide/platforms/android/index.html
 
-**실행 방법**
+- **실행 방법**
 
 ```shell
 cordova platform add android
 cordova run android
 ```
 
-**디바이스에 설치한 Android 앱을 크롬 브라우저로 디버깅하는 방법**
+- **디바이스에 설치한 Android 앱을 크롬 브라우저로 디버깅하는 방법**
 
 https://developer.chrome.com/docs/devtools/remote-debugging/
 
 ### **IOS**
 
-**사전 설정**
+- **사전 설정**
 
 cordova에서 IOS를 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
 
 https://cordova.apache.org/docs/en/11.x/guide/platforms/ios/index.html
+
+- **실행 방법**
 
 ```shell
 cordova platform add ios
 open -a Xcode platforms/ios
 ```
 
-**디바이스에 설치한 IOS 앱을 사파리 브라우저로 디버깅하는 방법**
+- **디바이스에 설치한 IOS 앱을 사파리 브라우저로 디버깅하는 방법**
 
 https://www.browserstack.com/guide/how-to-debug-on-iphone
 
 ### **Electron**
 
+- **사전 설정**
+
 cordova에서 Electron을 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
 
 https://cordova.apache.org/docs/en/11.x/guide/platforms/electron/index.html
+
+- **실행 방법**
 
 ```shell
 cordova platform add electron
@@ -127,8 +133,6 @@ build
 
 frontle.env.
 
-
-
 ## 대표 라이브러리
 
 modal
@@ -144,6 +148,10 @@ bottomsheet
 
 
 ## 기여자 및 기여 방법
+
+
+
+
 
 ## 라이센스
 
