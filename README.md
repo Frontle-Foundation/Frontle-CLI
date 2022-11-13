@@ -5,16 +5,16 @@
 #### **Frontle을 써야하는 이유**
 
 - **Non-Build 방식**
-  - webpack, babel을 몰라도 됩니다
+  - webpack, babel 등의 빌드 기술을 배우지 않아도 됩니다
   - 소스코드를 그대로 실행하고 배포할 수 있습니다
-  - 빌드에 사용되는 패키지들이 없기 때문에 유지보수에 드는 비용이 적습니다
+  - 종속된 빌드 도구들이 없어 유지보수에 드는 비용이 적습니다
 - **순수 JS 문법**
-  - react, vue와 같이 새로운 문법을 배우지 않아도됩니다
-  - 개발사의 지원 중단을 걱정하지 않아도 됩니다
+  - react, vue와 같이 새로운 문법을 배우지 않아도 됩니다
+  - 개발사의 지원 중단 및 업데이트에 의한 유지보수를 고려하지 않아도 됩니다
 - **강력한 기능들**
   - **Browser, Android, IOS, Electron 개발 지원(Cordova)**
   - NPM 지원
-  - 캐시 버스팅 지원
+  - Cache bursting 지원
   - NODE_ENV와 같은 기능 지원
   - Modal, Toast, BottomSheet, Cordova KeyValueStorage, Cordova FileUtil 등 라이브러리 지원
 
@@ -54,9 +54,9 @@ cordova run browser
 
 - **사전 설정**
 
-  cordova에서 안드로이드를 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
+cordova에서 안드로이드를 사용하기 위해서는 사전 설정이 필요합니다. 아래의 공식 문서를 확인해주세요
 
-  https://cordova.apache.org/docs/en/11.x/guide/platforms/android/index.html
+https://cordova.apache.org/docs/en/11.x/guide/platforms/android/index.html
 
 - **실행 방법**
 
@@ -67,7 +67,7 @@ cordova run android
 
 - **디바이스에 설치한 Android 앱을 크롬 브라우저로 디버깅하는 방법**
 
-  https://developer.chrome.com/docs/devtools/remote-debugging/
+https://developer.chrome.com/docs/devtools/remote-debugging/
 
 ### **IOS**
 
@@ -107,17 +107,31 @@ cordova run electron --nobuild
 
 ### vscode
 
-추천 확장 설치하세요(이미지 보여주기)
+- **추천되는 확장을 설치해주세요**
 
-cordova 확장 = 라이브리로드랑 디버깅 지원함(이미지)
+![2](https://user-images.githubusercontent.com/49587288/201522261-1dda22f6-5243-4628-8028-603ebf138704.PNG)
+
+- **Cordova Tools**
+  - Live Reload 지원
+  - Cordova 어플리케이션 실행 지원
+- **Inline HTML**
+  - 템플릿 문자열안에 작성한 HTML, CSS 코드 인식 지원
+- **Open file From Path**
+  - 소스코드 내부의 파일 경로를 마우스로 클릭하고 Alt + D를 누르면 파일이 열립니다
+- **Path Autocomplete**
+  - 파일 경로 자동 완성 지원
+- **Prettier**
+  - 소스코드 자동 정돈 기능 지원
 
 ### webstorm
 
-여기가서 .js 설정해주세요
+- JS Import 경로에 파일 확장자를 자동으로 추가하기 위해 설정에 들어가서 **Editor > Code Style > Javascript > Imports**의 **Use file extension** 설정을 **Always**로 변경합니다
 
-resource 폴더 설정해주세요
+![3](https://user-images.githubusercontent.com/49587288/201522864-6b32bb27-3715-4473-8c64-37da5931ed6e.PNG)
 
-cordova plugin 있어요 이런것들
+- 파일 경로가 정상적으로 작동하기 위해 **www/version 폴더**를 **Resource Root**로 설정해주세요
+
+![4](https://user-images.githubusercontent.com/49587288/201523251-1d36b788-86c9-4282-a0fb-7d191e3a47e0.PNG)
 
 ## Frontle-CLI 명령
 
