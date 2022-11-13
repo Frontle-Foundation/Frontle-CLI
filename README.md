@@ -15,8 +15,8 @@
   - **Browser, Android, IOS, Electron 개발 지원(Cordova)**
   - NPM 지원
   - Cache bursting 지원
-  - NODE_ENV와 같은 기능 지원
-  - Modal, Toast, BottomSheet, Cordova KeyValueStorage, Cordova FileUtil 등 라이브러리 지원
+  - NODE_ENV와 유사한 기능 지원
+  - Modal, Toast, BottomSheet, KeyValueStorage, FileUtil 등의 라이브러리 지원
 
 ## 개발 스타일
 
@@ -133,19 +133,103 @@ cordova run electron --nobuild
 
 ![4](https://user-images.githubusercontent.com/49587288/201523251-1d36b788-86c9-4282-a0fb-7d191e3a47e0.PNG)
 
-## Frontle-CLI 명령
+## Frontle CLI
 
-create
+- **frontle create**
 
-install
+  Frontle 프로젝트를 생성합니다
 
-uninstall
+  ```shell
+  frontle create myApp # "myAPP" 이름으로 프로젝트 생성
+  ```
 
-build
+- **frontle install**
 
-## Frontle 함수
+  npm 패키지를 브라우저에서 사용할 수 있는 형태로 설치합니다. **browser_modules** 폴더 안에 패키지가 설치됩니다
 
-frontle.env.
+  ```shell
+  # npm 사용법과 동일
+  frontle install jquery # jquery 설치
+  frontle install jquery@1.0.0
+  frontle install jquery@^1.0.0
+  frontle insatll # package.json에 기록된 패키지를 모두 설치합니다
+  ```
+
+- **frontle uninstall**
+
+  설치했던 패키지를 삭제합니다
+
+  ```shell
+  frontle uninstall jquery # jquery 삭제
+  ```
+
+- **frontle build**
+
+  Cache bursting, NODE_ENV와 유사한 기능을 지원합니다
+
+  ```shell
+  # Cache bursting
+  # version 폴더 이름 및 index.html의 base href를 "v1"으로 변경합니다
+  # 배포할 프로젝트에만 사용해야합니다. 개발중인 프로젝트에 사용해서는 안됩니다
+  frontle build -v v1
+  
+  # NODE_ENV와 유사
+  # frontle.env.FRONTLE_ENV값을 "production"으로 변경합니다
+  # 배포할 프로젝트에만 사용해야합니다. 개발중인 프로젝트에 사용해서는 안됩니다
+  frontle build -f production
+  ```
+
+## Frontle 라이브러리
+
+- **frontle.util**
+
+  - frontle.util.pageMove(pageName, params, displayParamsInURL)
+
+    다른 화면으로 이동합니다
+
+    ```javascript
+    frontle.util.pageMove("demo", {test: 123}, true);
+    frontle.util.pageMove("demo", {}, false);
+    frontle.util.pageMove("demo");
+    ```
+
+  - frontle.util.pageReplace(pageName, params, displayParamsInURL)
+
+    다른 화면으로 이동합니다. 이전 페이지로 돌아갈 수 없습니다
+
+    ```javascript
+    frontle.util.pageReplace("demo", {test: 123}, true);
+    frontle.util.pageReplace("demo", {}, false);
+    frontle.util.pageReplace("demo");
+    ```
+
+- **frontle.env**
+
+  - frontle.env.FRONTLE_ENV
+
+    frontle build -f 명령으로 설정한 값을 가져옵니다
+
+    ```javascript
+    console.log(frontle.env.FRONTLE_ENV) // null
+    ```
+
+- **frontle.event**
+
+- 
+
+- 
+
+- 
+
+- 
+
+- 
+
+- 
+
+- 
+
+frontle.system
 
 ## 대표 라이브러리
 
