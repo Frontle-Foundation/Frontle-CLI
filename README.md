@@ -14,7 +14,7 @@ npm install -g frontle
 ```shell
 frontle create myApp
 cd myApp
-npm install
+frontle install
 cordova platform add browser
 cordova run browser
 ```
