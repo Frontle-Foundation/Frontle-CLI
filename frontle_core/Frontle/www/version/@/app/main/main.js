@@ -1,4 +1,4 @@
-import { frontle } from "../../browser_modules/@frontle/frontle-core/frontle.js";
+import { frontle } from "../../browser_modules/@frontle/frontle-core/index.js";
 import mainHTML from "./main.html.js";
 
 const main = (params) => {

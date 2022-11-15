@@ -1,8 +1,6 @@
 {
   "javascript.preferences.importModuleSpecifierEnding": "js",
   "javascript.preferences.importModuleSpecifier": "relative",
-  "javascript.suggest.autoImports": true,
-  "javascript.suggest.includeCompletionsForImportStatements": true,
   "javascript.suggest.paths": false,
   "editor.links": false,
   "files.exclude": {
