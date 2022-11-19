@@ -1,6 +1,6 @@
 {
   "name": "@frontle/frontle",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "description": "Frontle command line interface tool",
   "engines": {
     "node": ">=16.0.0"
@@ -10,14 +10,11 @@
     "spa",
     "client",
     "framework",
-    "cordova",
-    "web",
+    "browser",
     "android",
     "ios",
-    "electron",
-    "browser",
-    "app",
-    "desktop"
+    "cordova",
+    "electron"
   ],
   "author": "Artifriends, Inc. <help@artifriends.com>",
   "contributors": [
@@ -27,10 +24,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Artifriends-inc/Frontle-CLI.git"
+    "url": "git+https://github.com/Frontle-Foundation/Frontle-CLI.git"
   },
   "bugs": {
-    "url": "https://github.com/Artifriends-inc/Frontle-CLI/issues"
+    "url": "https://github.com/Frontle-Foundation/Frontle-CLI/issues"
   },
   "homepage": "https://frontle.org/",
   "main": "bin/cli.js",

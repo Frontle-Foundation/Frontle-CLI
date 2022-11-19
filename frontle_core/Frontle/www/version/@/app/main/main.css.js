@@ -1,21 +1,19 @@
-const mainCSS = () => {
+const css = () => {
   return /* css */ `
-    .mainLogo {
+    .logo {
       position: absolute;
-
+      width: 30vw;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-
-      width: 25vw;
     }
 
     @media screen and (max-width: 640px) {
-      .mainLogo {
-        width: 45vw;
+      .logo {
+        width: 60vw;
       }
     }
   `;
 };
 
-export default mainCSS;
+export default { css };
