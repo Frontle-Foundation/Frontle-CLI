@@ -1,7 +1,7 @@
 {
   "name": "frontle-example-app",
   "description": "The easiest multi-platform SPA framework",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Artifriends, Inc. <help@artifriends.com>",
   "contributors": [
     "Yun HyeongJun <y37653@gmail.com>",
@@ -24,10 +24,10 @@
   },
   "cordova": {
     "platforms": [
-      "android",
       "ios",
       "electron",
-      "browser"
+      "browser",
+      "android"
     ],
     "plugins": {}
   },

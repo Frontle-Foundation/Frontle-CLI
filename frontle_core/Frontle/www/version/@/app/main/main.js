@@ -1,13 +1,13 @@
 import { frontle } from "../../browser_modules/@frontle/frontle-core/index.js";
-import mainHtml from "./main.html.js";
+import mainView from "./mainView.js";
 
 const main = (params) => {
   const index = params.index || 0;
-  const isEvenNumber = index % 2 === 0;
+  const isIndexEven = index % 2 === 0;
 
   // Rendering
-  mainHtml.render();
-  mainHtml.changeLogo(isEvenNumber);
+  mainView.render();
+  mainView.changeLogo(isIndexEven);
 
   // Move the page and pass the "index" parameter
   const timeout = setTimeout(() => {
