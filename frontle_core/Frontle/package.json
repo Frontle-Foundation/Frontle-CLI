@@ -1,11 +1,11 @@
 {
   "name": "frontle-example-app",
   "description": "The easiest multi-platform SPA framework",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Artifriends, Inc. <help@artifriends.com>",
   "contributors": [
-    "Yun HyeongJun <y37653@gmail.com>",
-    "Ohn DongHun <fatihohn@gmail.com>"
+    "Yun Hyeongjun <y37653@gmail.com>",
+    "Ohn Donghun <fatihohn@gmail.com>"
   ],
   "license": "MIT",
   "repository": {
@@ -35,7 +35,7 @@
     "dependencies": {
       "jquery": {},
       "@frontle/frontle-core": {
-        "notBuild": true
+        "noBuild": true
       }
     }
   },

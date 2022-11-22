@@ -48,7 +48,7 @@ const allInstall = async () => {
       await buildPackage(
         packageName,
         packageType,
-        packageJsonData.frontle.dependencies[packageName].notBuild === true
+        packageJsonData.frontle.dependencies[packageName].noBuild === true
       );
 
       // Installation Success Message Output
@@ -60,7 +60,7 @@ const allInstall = async () => {
 };
 
 // Install package
-const install = async (enteredPackageFullName, notBuild) => {
+const install = async (enteredPackageFullName, noBuild) => {
   try {
     // Check package full name
     util.IsNPMPackageName(enteredPackageFullName);
@@ -82,7 +82,7 @@ const install = async (enteredPackageFullName, notBuild) => {
     // Record installed package in package.json
     let packageJsonData = cliUtil.getPackageJsonData();
     packageJsonData.frontle.dependencies[packageName] = {
-      notBuild: notBuild,
+      noBuild: noBuild,
     };
     cliUtil.setPackageJsonData(packageJsonData);
 
@@ -100,7 +100,7 @@ const install = async (enteredPackageFullName, notBuild) => {
     ).type;
 
     // Building
-    await buildPackage(packageName, packageType, notBuild);
+    await buildPackage(packageName, packageType, noBuild);
 
     // Installation Success Message Output
     util.consoleLogData(`Package "${packageFullName}" install complete`);
@@ -110,7 +110,7 @@ const install = async (enteredPackageFullName, notBuild) => {
 };
 
 // Build the package
-const buildPackage = async (packageName, packageType = "", notBuild) => {
+const buildPackage = async (packageName, packageType = "", noBuild) => {
   try {
     // Set the package installation path
     const packageFolderPath = `./${config.path["www/version/@/browser_modules"]}/${packageName}`;
@@ -119,8 +119,8 @@ const buildPackage = async (packageName, packageType = "", notBuild) => {
     // Delete existing packages
     shellUtil.shell_rm(packageFolderPath);
 
-    // Handle if not build
-    if (notBuild === true) {
+    // Handle if no build
+    if (noBuild === true) {
       shellUtil.shell_cp(
         `./${config.path["node_modules"]}/${packageName}`,
         packageFolderPath
@@ -205,7 +205,7 @@ module.exports = async (enteredPackageFullName, options) => {
     // Install all or one
     enteredPackageFullName === undefined
       ? await allInstall()
-      : await install(enteredPackageFullName, options.notBuild === true);
+      : await install(enteredPackageFullName, options.noBuild === true);
 
     // Success Message Output
     util.consoleLogData("Package installation complete");

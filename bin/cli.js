@@ -34,9 +34,9 @@ program
 program
   .command("install")
   .description(
-    "Install the npm package in a form that can be used in the browser"
+    "Install the npm packages in a form that can be used in the browser"
   )
-  .option("-n, --notBuild", "Install npm packages without building")
+  .option("-n, --noBuild", "Install npm package without building")
   .argument("[npmPackageName]", "npm package name to install")
   .action(async (enteredPackageFullName, options) => {
     await actionRunner(() =>
@@ -48,7 +48,7 @@ program
 program
   .command("uninstall")
   .description(
-    'Remove the npm packages installed with "frontle install" command'
+    'Uninstall the npm package installed with "frontle install" command'
   )
   .argument("<npmPackageName>", "npm package name to uninstall")
   .action(async (enteredPackageFullName) => {

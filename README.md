@@ -25,7 +25,7 @@ cordova run browser
 
 ## Contributing
 
-Frontle is an open source project. Bug fixes and improvements, tests, fixes and additions to documentation, etc. We welcome all contributions that can help Frontle develop!
+Frontle is an open source project. We welcome all contributions that can help Frontle, including bug fixes and improvements, testing, and documentation additions!
 
 ## License
 
