@@ -1,6 +1,6 @@
 {
   "name": "@frontle/frontle",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Frontle command line interface tool",
   "engines": {
     "node": ">=16.0.0"
@@ -18,8 +18,8 @@
   ],
   "author": "Artifriends, Inc. <help@artifriends.com>",
   "contributors": [
-    "Yun HyeongJun <y37653@gmail.com>",
-    "Ohn DongHun <fatihohn@gmail.com>"
+    "Yun Hyeongjun <y37653@gmail.com>",
+    "Ohn Donghun <fatihohn@gmail.com>"
   ],
   "license": "MIT",
   "repository": {

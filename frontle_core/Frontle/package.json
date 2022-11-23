@@ -1,7 +1,7 @@
 {
   "name": "frontle-example-app",
   "description": "The easiest multi-platform SPA framework",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Artifriends, Inc. <help@artifriends.com>",
   "contributors": [
     "Yun Hyeongjun <y37653@gmail.com>",
@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "@frontle/frontle-core": "^1.0.1",
+    "@frontle/frontle-core": "^1.0.2",
     "jquery": "^3.6.1"
   }
 }
