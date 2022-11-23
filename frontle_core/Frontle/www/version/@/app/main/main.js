@@ -1,26 +1,32 @@
 import { frontle } from "../../browser_modules/@frontle/frontle-core/index.js";
-import mainView from "./mainView.js";
+import { jquery } from "../../browser_modules/jquery/module.js"; // "frontle install jquery"
+const $ = jquery;
+
+const css = /* css */ `
+  .logo {
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+const html = () => {
+  return /* html */ `
+    <style>${css}</style>
+
+    <img class="logo" src="@/assets/img/Logo.svg" />
+  `;
+};
 
 const main = (params) => {
-  const index = params.index || 0;
-  const isIndexEven = index % 2 === 0;
+  console.log(params);
+  document.getElementById("app").innerHTML = html();
 
-  // Rendering
-  mainView.render();
-  mainView.changeLogo(isIndexEven);
-
-  // Move the page and pass the "index" parameter
-  const timeout = setTimeout(() => {
-    frontle.util.pageMove("main", { index: index + 1 });
-  }, 5000);
-
-  // Clear setTimeout when back or forward buttons are pressed
-  const listener = () => {
-    clearTimeout(timeout);
-    return true; // Execute history.back or history.forward if listener returns true
-  };
-  frontle.event.back.addListener(listener);
-  frontle.event.forward.addListener(listener);
+  // if (params.test === undefined) {
+  //   frontle.util.pageMove("main", { test: "hello!" });
+  // }
 };
 
 export default main;
