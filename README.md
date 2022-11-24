@@ -21,7 +21,7 @@ cordova run browser
 
 ## Docs
 
-[Guide](https://frontle.org/docs)
+[Guide](https://frontle.org/docs/installation/getting-started/)
 
 ## Contributing
 
