@@ -60,9 +60,11 @@ const setEnv = (FRONTLE_ENV) => {
 
     // Setting FRONTLE_ENV
     util.ReplaceFileRowToIdentifier(
-      config.path["www/version/@/browser_modules/frontle/frontle.js"],
+      config.path[
+        "www/version/@/browser_modules/@frontle/frontle-core/index.js"
+      ],
       "#FRONTLE_BUILD_LINE: FRONTLE_ENV",
-      `FRONTLE_ENV: "${FRONTLE_ENV}",`
+      `/* #FRONTLE_BUILD_LINE: FRONTLE_ENV */ FRONTLE_ENV: "${FRONTLE_ENV}",`
     );
 
     // Success Message Output
@@ -74,20 +76,81 @@ const setEnv = (FRONTLE_ENV) => {
   }
 };
 
+const reset = () => {
+  try {
+    // Reset version
+    const resetVersion = () => {
+      // Read index.html
+      let fileData = fs.readFileSync(config.path["www/index.html"], "utf8");
+      if (fileData === undefined || fileData === null || fileData === "") {
+        throw { message: "The content of index.html does not exist" };
+      }
+
+      // Get base tag
+      const doc = parser(fileData);
+      const elements = doc.querySelectorAll(`base`);
+      if (elements.length < 1) {
+        throw { message: "<base> tag does not exist" };
+      }
+      const baseElement = elements[0];
+
+      // Get current version
+      const currentVersion = baseElement
+        .getAttribute("href")
+        .replace(/\//gi, "");
+
+      // Reset index.html
+      baseElement.setAttribute("href", `/version/`);
+      fs.writeFileSync(config.path["www/index.html"], doc.innerHTML);
+
+      // Reset folder version
+      if (currentVersion !== "version") {
+        shellUtil.shell_mv(`www/${currentVersion}`, config.path["www/version"]);
+      }
+    };
+    resetVersion();
+
+    // Reset FRONTLE_ENV
+    util.ReplaceFileRowToIdentifier(
+      config.path[
+        "www/version/@/browser_modules/@frontle/frontle-core/index.js"
+      ],
+      "#FRONTLE_BUILD_LINE: FRONTLE_ENV",
+      `/* #FRONTLE_BUILD_LINE: FRONTLE_ENV */ FRONTLE_ENV: null,`
+    );
+  } catch (e) {
+    throw e;
+  }
+};
+
 // Building
 module.exports = async (options) => {
   try {
-    // Check root path
-    cliUtil.checkRootPath();
+    // Reset
+    if (options.reset === true) {
+      // Check root path
+      cliUtil.checkRootPath(false);
 
-    // env settings
-    setEnv(options.fenv);
+      // Reset
+      reset();
 
-    // version settings
-    setVersion(options.buildVersion);
+      // Success Message Output
+      util.consoleLogData("Reset complete");
+    }
+    // Building
+    else {
+      // Check root path
+      cliUtil.checkRootPath();
 
-    // Success Message Output
-    util.consoleLogData("Build complete");
+      // env settings
+      setEnv(options.fenv);
+
+      // version settings
+      setVersion(options.buildVersion);
+
+      // Success Message Output
+      util.consoleLogData("Build complete");
+    }
   } catch (e) {
     throw e;
   }

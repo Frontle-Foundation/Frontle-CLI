@@ -69,6 +69,7 @@ program
     "-f, --fenv <FRONTLE_ENV>",
     'Set the value of "frontle.env.FRONTLE_ENV"'
   )
+  .option("-r, --reset", "Revert to pre-build state")
   .action(async (options) => {
     await actionRunner(() => require("./cli/build.js")(options));
   });

@@ -20,8 +20,8 @@ config.path = {
   "www/index.html": "www/index.html",
   "www/version": "www/version",
   "www/version/@/browser_modules": "www/version/@/browser_modules",
-  "www/version/@/browser_modules/frontle/frontle.js":
-    "www/version/@/browser_modules/frontle/frontle.js",
+  "www/version/@/browser_modules/@frontle/frontle-core/index.js":
+    "www/version/@/browser_modules/@frontle/frontle-core/index.js",
 
   // cli
   "cli/frontle_core": `${__dirname}/../../frontle_core`,

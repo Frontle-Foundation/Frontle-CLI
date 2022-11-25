@@ -2,14 +2,13 @@ const fs = require("fs");
 const config = require("../config/config.js");
 
 // Check if the current path is the project root path
-const checkRootPath = () => {
+const checkRootPath = (checkVersionOriginal = true) => {
   try {
     // List of files that must exist in the project root path
-    const filePathList = [
-      config.path["www"],
-      config.path["www/version"],
-      config.path["www/index.html"],
-    ];
+    let filePathList = [config.path["www"], config.path["www/index.html"]];
+    if (checkVersionOriginal === true) {
+      filePathList.push(config.path["www/version"]);
+    }
 
     // Check if file paths exist
     filePathList.forEach((value) => {
