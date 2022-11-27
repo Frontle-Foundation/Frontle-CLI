@@ -6,7 +6,7 @@
 
 ```shell
 npm install -g cordova
-npm install -g frontle
+npm install -g @frontle/frontle-cli
 ```
 
 ## Creating a new Frontle project
