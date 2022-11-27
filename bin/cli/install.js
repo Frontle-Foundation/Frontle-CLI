@@ -45,6 +45,7 @@ const allInstall = async () => {
       ).type;
 
       // Building
+      util.consoleLogData(`Building package "${packageName}"`);
       await buildPackage(
         packageName,
         packageType,
@@ -76,8 +77,8 @@ const install = async (enteredPackageFullName, noBuild) => {
     }
 
     // Install package
-    shellUtil.shell_exec(`npm uninstall ${packageFullName}`);
-    shellUtil.shell_exec(`npm install ${packageFullName}`);
+    shellUtil.shell_exec(`npm uninstall ${packageFullName}`, false);
+    shellUtil.shell_exec(`npm install ${packageFullName}`, false);
 
     // Record installed package in package.json
     let packageJsonData = cliUtil.getPackageJsonData();
@@ -100,6 +101,7 @@ const install = async (enteredPackageFullName, noBuild) => {
     ).type;
 
     // Building
+    util.consoleLogData(`Building package "${packageFullName}"`);
     await buildPackage(packageName, packageType, noBuild);
 
     // Installation Success Message Output
