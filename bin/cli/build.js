@@ -88,7 +88,7 @@ const reset = () => {
 
       // Get base tag
       const doc = parser(fileData);
-      const elements = doc.querySelectorAll(`base`);
+      const elements = doc.querySelectorAll("base");
       if (elements.length < 1) {
         throw { message: "<base> tag does not exist" };
       }
@@ -100,7 +100,7 @@ const reset = () => {
         .replace(/\//gi, "");
 
       // Reset index.html
-      baseElement.setAttribute("href", `/version/`);
+      baseElement.setAttribute("href", "/version/");
       fs.writeFileSync(config.path["www/index.html"], doc.innerHTML);
 
       // Reset folder version

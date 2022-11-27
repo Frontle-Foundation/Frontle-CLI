@@ -1,6 +1,6 @@
 {
   "name": "@frontle/frontle",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Frontle command line interface tool",
   "engines": {
     "node": ">=16.0.0"
