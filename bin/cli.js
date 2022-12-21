@@ -61,10 +61,7 @@ program
 program
   .command("build")
   .description("Use build functions")
-  .option(
-    "-v, --buildVersion [buildVersion]",
-    "Version to apply to the project. If nothing is specified, it will be applied randomly"
-  )
+  .option("-c, --cacheBusting", "Cache busting by randomly changing file paths")
   .option(
     "-f, --fenv <FRONTLE_ENV>",
     'Set the value of "frontle.env.FRONTLE_ENV"'

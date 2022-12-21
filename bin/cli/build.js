@@ -5,24 +5,12 @@ const config = require("../config/config.js");
 const parser = require("node-html-parser").parse;
 const fs = require("fs");
 
-const setVersion = (buildVersion) => {
+const cacheBusting = () => {
   try {
-    if (buildVersion === undefined) return;
-
-    // Check build version
-    if (buildVersion === true) {
-      buildVersion = util.Timestamp();
-    } else {
-      if (util.IsConsistOnlyEngNumUnderBar(buildVersion) === false) {
-        throw {
-          message:
-            "The build version can only be English, numbers, _ combinations",
-        };
-      }
-    }
+    const version = util.Timestamp();
 
     // Read index.html
-    let fileData = fs.readFileSync(config.path["www/index.html"], "utf8");
+    const fileData = fs.readFileSync(config.path["www/index.html"], "utf8");
     if (fileData === undefined || fileData === null || fileData === "") {
       throw { message: "The content of index.html does not exist" };
     }
@@ -33,14 +21,14 @@ const setVersion = (buildVersion) => {
     if (elements.length < 1) {
       throw { message: "<base> tag does not exist" };
     }
-    elements[0].setAttribute("href", `/${buildVersion}/`);
+    elements[0].setAttribute("href", `/${version}/`);
     fs.writeFileSync(config.path["www/index.html"], doc.innerHTML);
 
     // Change folder version
-    shellUtil.shell_mv(config.path["www/version"], `www/${buildVersion}`);
+    shellUtil.shell_mv(config.path["www/version"], `www/${version}`);
 
     // Success Message Output
-    util.consoleLogData(`Version applied with value "${buildVersion}"`);
+    util.consoleLogData("Cache busting done");
   } catch (e) {
     throw e;
   }
@@ -78,10 +66,10 @@ const setEnv = (FRONTLE_ENV) => {
 
 const reset = () => {
   try {
-    // Reset version
-    const resetVersion = () => {
+    // Reset cache busting
+    const resetCacheBusting = () => {
       // Read index.html
-      let fileData = fs.readFileSync(config.path["www/index.html"], "utf8");
+      const fileData = fs.readFileSync(config.path["www/index.html"], "utf8");
       if (fileData === undefined || fileData === null || fileData === "") {
         throw { message: "The content of index.html does not exist" };
       }
@@ -108,7 +96,7 @@ const reset = () => {
         shellUtil.shell_mv(`www/${currentVersion}`, config.path["www/version"]);
       }
     };
-    resetVersion();
+    resetCacheBusting();
 
     // Reset FRONTLE_ENV
     util.ReplaceFileRowToIdentifier(
@@ -118,6 +106,9 @@ const reset = () => {
       "#FRONTLE_BUILD_LINE: FRONTLE_ENV",
       `/* #FRONTLE_BUILD_LINE: FRONTLE_ENV */ FRONTLE_ENV: null,`
     );
+
+    // Success Message Output
+    util.consoleLogData("Reset complete");
   } catch (e) {
     throw e;
   }
@@ -133,9 +124,6 @@ module.exports = async (options) => {
 
       // Reset
       reset();
-
-      // Success Message Output
-      util.consoleLogData("Reset complete");
     }
     // Building
     else {
@@ -145,11 +133,10 @@ module.exports = async (options) => {
       // env settings
       setEnv(options.fenv);
 
-      // version settings
-      setVersion(options.buildVersion);
-
-      // Success Message Output
-      util.consoleLogData("Build complete");
+      // cache busting
+      if (options.cacheBusting === true) {
+        cacheBusting();
+      }
     }
   } catch (e) {
     throw e;
