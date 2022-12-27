@@ -26,6 +26,7 @@ config.path = {
   // cli
   "cli/frontle_core": `${__dirname}/../../frontle_core`,
   "cli/frontle_core/Frontle": `${__dirname}/../../frontle_core/Frontle`,
+  "cli/frontle_core/Frontle/.gitignore": `${__dirname}/../../frontle_core/Frontle/.gitignore`,
 };
 
 module.exports = config;

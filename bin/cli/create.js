@@ -31,6 +31,10 @@ module.exports = (projectName) => {
     try {
       shellUtil.shell_exec(`cd ${projectName} && git init`);
     } catch (e) {}
+    shellUtil.shell_cp(
+      config.path["cli/frontle_core/Frontle/.gitignore"],
+      `${projectName}/.gitignore`
+    );
 
     // Success Message Output
     util.consoleLogData(`Project created with name "${projectName}"`);
