@@ -4,6 +4,7 @@ config.packageName = packageJson.name;
 config.packageVersion = packageJson.version;
 config.packageDescription = packageJson.description;
 config.projectName = "Frontle";
+config.projectReleaseTag = "v1.0.6";
 
 config.path = {
   // root
@@ -22,11 +23,6 @@ config.path = {
   "www/version/@/browser_modules": "www/version/@/browser_modules",
   "www/version/@/browser_modules/@frontle/frontle-core/index.js":
     "www/version/@/browser_modules/@frontle/frontle-core/index.js",
-
-  // cli
-  "cli/frontle_core": `${__dirname}/../../frontle_core`,
-  "cli/frontle_core/Frontle": `${__dirname}/../../frontle_core/Frontle`,
-  "cli/frontle_core/Frontle/.gitignore": `${__dirname}/../../frontle_core/Frontle/.gitignore`,
 };
 
 module.exports = config;

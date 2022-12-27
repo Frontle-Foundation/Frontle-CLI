@@ -24,17 +24,14 @@ module.exports = (projectName) => {
       };
     }
 
-    // Install frontle core
-    shellUtil.shell_cp(config.path["cli/frontle_core/Frontle"], projectName);
+    // Check git
+    shellUtil.shell_exec("git -v");
 
-    // Init git
-    try {
-      shellUtil.shell_exec(`cd ${projectName} && git init`);
-    } catch (e) {}
-    shellUtil.shell_cp(
-      config.path["cli/frontle_core/Frontle/.gitignore"],
-      `${projectName}/.gitignore`
+    // Install frontle project
+    shellUtil.shell_exec(
+      `git clone -b ${config.projectReleaseTag} --single-branch https://github.com/Frontle-Foundation/Frontle.git ${projectName}`
     );
+    shellUtil.shell_exec(`cd ${projectName} && rm -rf .git && git init`);
 
     // Success Message Output
     util.consoleLogData(`Project created with name "${projectName}"`);
