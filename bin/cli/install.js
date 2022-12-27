@@ -9,7 +9,7 @@ const browserify = require("browserify");
 const allInstall = async () => {
   try {
     // Install all packages
-    shellUtil.shell_exec(`npm install`, false);
+    shellUtil.shell_exec(`npm install`);
 
     // Check if browser_modules folder exists, create if not
     if (!cliUtil.isDir(config.path["www/version/@/browser_modules"])) {
@@ -77,8 +77,8 @@ const install = async (enteredPackageFullName, noBuild) => {
     }
 
     // Install package
-    shellUtil.shell_exec(`npm uninstall ${packageFullName}`, false);
-    shellUtil.shell_exec(`npm install ${packageFullName}`, false);
+    shellUtil.shell_exec(`npm uninstall ${packageFullName}`);
+    shellUtil.shell_exec(`npm install ${packageFullName}`);
 
     // Record installed package in package.json
     let packageJsonData = cliUtil.getPackageJsonData();

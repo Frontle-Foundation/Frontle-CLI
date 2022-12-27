@@ -25,7 +25,11 @@ const checkRootPath = (checkVersionOriginal = true) => {
 const getPackageJsonData = (path = `./${config.path["package.json"]}`) => {
   try {
     // Check if the package.json file exists
-    if (!fs.existsSync(path)) throw `${path} doesn\'t exist`;
+    if (!fs.existsSync(path)) {
+      throw {
+        message: `${path} doesn\'t exist`,
+      };
+    }
 
     // Read package.json file
     let packageJson = JSON.parse(fs.readFileSync(path).toString());

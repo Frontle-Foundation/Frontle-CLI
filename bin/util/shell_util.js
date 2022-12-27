@@ -1,28 +1,14 @@
 const shelljs = require("shelljs");
 const path = require("path");
-const util = require("./util.js");
-shelljs.config.silent = true;
 
 // check shell error
 const checkShellError = (result) => {
   try {
     if (result.stderr !== "" && String(result.code) !== "0") {
-      throw result.stderr;
-    }
-  } catch (e) {
-    throw e;
-  }
-};
-
-// output shell log
-const outputShellLog = (result) => {
-  try {
-    if (
-      result.stdout !== "\n" &&
-      result.stdout !== "" &&
-      result.stdout !== " "
-    ) {
-      util.consoleLogData(result.stdout);
+      throw {
+        message: result.stderr,
+        output: false,
+      };
     }
   } catch (e) {
     throw e;
@@ -30,14 +16,11 @@ const outputShellLog = (result) => {
 };
 
 // shell: exec
-const shell_exec = (command, silent = true) => {
+const shell_exec = (command) => {
   try {
-    const result = shelljs.exec(command, {
-      silent: silent,
-    });
-    if (!silent) return;
+    const result = shelljs.exec(command);
     checkShellError(result);
-    outputShellLog(result);
+    return result;
   } catch (e) {
     throw e;
   }
@@ -48,7 +31,7 @@ const shell_rm = (path, option = "-rf") => {
   try {
     const result = shelljs.rm(option, path);
     checkShellError(result);
-    outputShellLog(result);
+    return result;
   } catch (e) {
     throw e;
   }
@@ -62,7 +45,7 @@ const shell_cp = (fromPath, toPath, option = "-Rf") => {
 
     const result = shelljs.cp(option, fromPath, toPath);
     checkShellError(result);
-    outputShellLog(result);
+    return result;
   } catch (e) {
     throw e;
   }
@@ -76,7 +59,7 @@ const shell_mv = (fromPath, toPath, option = "-f") => {
 
     const result = shelljs.mv(option, fromPath, toPath);
     checkShellError(result);
-    outputShellLog(result);
+    return result;
   } catch (e) {
     throw e;
   }
@@ -87,7 +70,7 @@ const shell_mkdir = (path, option = "-p") => {
   try {
     const result = shelljs.mkdir(option, path);
     checkShellError(result);
-    outputShellLog(result);
+    return result;
   } catch (e) {
     throw e;
   }
@@ -98,7 +81,7 @@ const shell_echo = (message) => {
   try {
     const result = shelljs.echo(message);
     checkShellError(result);
-    outputShellLog(result);
+    return result;
   } catch (e) {
     throw e;
   }

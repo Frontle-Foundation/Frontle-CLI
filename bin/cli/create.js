@@ -27,11 +27,10 @@ module.exports = (projectName) => {
     // Install frontle core
     shellUtil.shell_cp(config.path["cli/frontle_core/Frontle"], projectName);
 
-    // Install frontle git
-    shellUtil.shell_cp(
-      config.path["cli/frontle_core/FrontleGit"],
-      `${projectName}/.git`
-    );
+    // Init git
+    try {
+      shellUtil.shell_exec(`cd ${projectName} && git init`);
+    } catch (e) {}
 
     // Success Message Output
     util.consoleLogData(`Project created with name "${projectName}"`);

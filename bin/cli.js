@@ -9,7 +9,11 @@ const actionRunner = async (fn = () => {}) => {
     await fn();
     process.exit();
   } catch (e) {
-    if (e !== "\n" && e !== "" && e !== " ") util.consoleLogError(e);
+    const msg = e.message;
+    const output = e.output;
+    if (output !== false && msg !== "\n" && msg !== "" && msg !== " ") {
+      util.consoleLogError(msg);
+    }
     process.exit(1);
   }
 };
