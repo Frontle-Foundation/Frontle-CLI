@@ -4,7 +4,7 @@ config.packageName = packageJson.name;
 config.packageVersion = packageJson.version;
 config.packageDescription = packageJson.description;
 config.projectName = "Frontle";
-config.projectReleaseTag = "v1.0.7";
+config.projectReleaseTag = "v1.0.8";
 
 config.path = {
   // root
