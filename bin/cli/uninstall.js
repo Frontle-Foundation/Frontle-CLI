@@ -6,8 +6,8 @@ const config = require("../config/config.js");
 // Uninstall package
 module.exports = (enteredPackageFullName) => {
   try {
-    // Check root path
     cliUtil.checkRootPath();
+    cliUtil.checkNoCachebusting();
 
     // Get package name
     const { packageName } = util.getNPMPackageInfo(enteredPackageFullName);

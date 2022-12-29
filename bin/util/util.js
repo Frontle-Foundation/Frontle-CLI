@@ -5,6 +5,7 @@ colors.enable();
 const IsConsistOnlyEngNumUnderBar = (str) => {
   return /^[_A-Za-z0-9]*$/.test(str);
 };
+
 const ToHex = (str) => {
   let result = "";
   for (let i = 0; i < str.length; i++) {
@@ -12,12 +13,15 @@ const ToHex = (str) => {
   }
   return result;
 };
+
 const Timestamp = () => {
   return String(new Date().getTime());
 };
+
 const IsNPMPackageName = (str) => {
   return /@[~^]?([\dvx*]+(?:[-.](?:[\dx*]+|alpha|beta))*)/g.test(str);
 };
+
 const getNPMPackageInfo = (NPMPackageFullName) => {
   const array = NPMPackageFullName.split(
     /@[~^]?([\dvx*]+(?:[-.](?:[\dx*]+|alpha|beta))*)/g
@@ -34,6 +38,7 @@ const getNPMPackageInfo = (NPMPackageFullName) => {
     packageFullName: packageFullName,
   };
 };
+
 const ReplaceFileRowToIdentifier = (filePath, identifier, data) => {
   try {
     // Read file

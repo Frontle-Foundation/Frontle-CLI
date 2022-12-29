@@ -1,16 +1,10 @@
 const fs = require("fs");
 const config = require("../config/config.js");
+const util = require("./util.js");
 
-// Check if the current path is the project root path
-const checkRootPath = (checkVersionOriginal = true) => {
+const checkRootPath = () => {
   try {
-    // List of files that must exist in the project root path
-    let filePathList = [config.path["www"], config.path["www/index.html"]];
-    if (checkVersionOriginal === true) {
-      filePathList.push(config.path["www/version"]);
-    }
-
-    // Check if file paths exist
+    const filePathList = [config.path["www"], config.path["www/index.html"]];
     filePathList.forEach((value) => {
       if (fs.existsSync(`./${value}`) === false) {
         throw { message: "You are not in the project root path" };
@@ -21,7 +15,19 @@ const checkRootPath = (checkVersionOriginal = true) => {
   }
 };
 
-// Get package.json data
+const checkNoCachebusting = () => {
+  try {
+    if (fs.existsSync(`./${config.path["www/version"]}`) === false) {
+      throw {
+        message:
+          "Enter the frontle build -r command to revert to the state before cache busting",
+      };
+    }
+  } catch (e) {
+    throw e;
+  }
+};
+
 const getPackageJsonData = (path = `./${config.path["package.json"]}`) => {
   try {
     // Check if the package.json file exists
@@ -45,7 +51,6 @@ const getPackageJsonData = (path = `./${config.path["package.json"]}`) => {
   }
 };
 
-// Set package.json data
 const setPackageJsonData = (
   data,
   path = `./${config.path["package.json"]}`
@@ -57,7 +62,6 @@ const setPackageJsonData = (
   }
 };
 
-// Whether the path is a folder
 const isDir = (path) => {
   try {
     return fs.lstatSync(path).isDirectory();
@@ -66,8 +70,31 @@ const isDir = (path) => {
   }
 };
 
+const set_frontle_env_FRONTLE_ENV = (value) => {
+  if (value !== "null") {
+    value = `"${value}"`;
+  }
+
+  util.ReplaceFileRowToIdentifier(
+    config.path["www/version/@/browser_modules/@frontle/frontle-core/index.js"],
+    "#FRONTLE_BUILD_LINE: FRONTLE_ENV",
+    `/* #FRONTLE_BUILD_LINE: FRONTLE_ENV */ FRONTLE_ENV: ${value},`
+  );
+};
+
+const set_frontle_env_version = (value) => {
+  util.ReplaceFileRowToIdentifier(
+    config.path["www/version/@/browser_modules/@frontle/frontle-core/index.js"],
+    "#FRONTLE_BUILD_LINE: version",
+    `/* #FRONTLE_BUILD_LINE: version */ version: "${value}",`
+  );
+};
+
 module.exports = {
+  set_frontle_env_FRONTLE_ENV,
+  set_frontle_env_version,
   checkRootPath,
+  checkNoCachebusting,
   getPackageJsonData,
   setPackageJsonData,
   isDir,

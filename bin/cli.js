@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-const util = require("./util/util.js");
 const { Command } = require("commander");
+const util = require("./util/util.js");
 const config = require("./config/config.js");
 const program = new Command();
+
 const actionRunner = async (fn = () => {}) => {
   try {
     await fn();
@@ -17,6 +18,7 @@ const actionRunner = async (fn = () => {}) => {
     process.exit(1);
   }
 };
+
 program
   .name(config.packageName)
   .description(config.packageDescription)

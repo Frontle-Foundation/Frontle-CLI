@@ -1,7 +1,6 @@
 const shelljs = require("shelljs");
 const path = require("path");
 
-// check shell error
 const checkShellError = (result) => {
   try {
     if (result.stderr !== "" && String(result.code) !== "0") {
@@ -15,7 +14,6 @@ const checkShellError = (result) => {
   }
 };
 
-// shell: exec
 const shell_exec = (command) => {
   try {
     const result = shelljs.exec(command);
@@ -26,7 +24,6 @@ const shell_exec = (command) => {
   }
 };
 
-// shell: rm
 const shell_rm = (path, option = "-rf") => {
   try {
     const result = shelljs.rm(option, path);
@@ -37,7 +34,6 @@ const shell_rm = (path, option = "-rf") => {
   }
 };
 
-// shell: cp
 const shell_cp = (fromPath, toPath, option = "-Rf") => {
   try {
     // create parents path
@@ -51,7 +47,6 @@ const shell_cp = (fromPath, toPath, option = "-Rf") => {
   }
 };
 
-// shell: mv
 const shell_mv = (fromPath, toPath, option = "-f") => {
   try {
     // create parents path
@@ -65,7 +60,6 @@ const shell_mv = (fromPath, toPath, option = "-f") => {
   }
 };
 
-// shell: mkdir
 const shell_mkdir = (path, option = "-p") => {
   try {
     const result = shelljs.mkdir(option, path);
@@ -76,7 +70,6 @@ const shell_mkdir = (path, option = "-p") => {
   }
 };
 
-// shell: echo
 const shell_echo = (message) => {
   try {
     const result = shelljs.echo(message);
