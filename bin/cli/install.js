@@ -205,7 +205,7 @@ module.exports = async (enteredPackageFullName, options) => {
     cliUtil.checkNoCachebusting();
 
     // Install all or one
-    cliUtil.enteredPackageFullName === undefined
+    enteredPackageFullName === undefined
       ? await allInstall()
       : await install(enteredPackageFullName, options.noBuild === true);
 
