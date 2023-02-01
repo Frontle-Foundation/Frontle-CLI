@@ -10,6 +10,7 @@ const allInstall = async () => {
   try {
     // Install all packages
     shellUtil.shell_exec("npm install");
+    shellUtil.shell_exec("npm update");
 
     // Check if browser_modules folder exists, create if not
     if (!cliUtil.isDir(config.path["www/version/@/browser_modules"])) {
